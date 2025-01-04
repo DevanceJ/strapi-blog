@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_texts",
+  "info": {
+    "displayName": "Text",
+    "icon": "pencil",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

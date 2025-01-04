@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_ui_components_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "television"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

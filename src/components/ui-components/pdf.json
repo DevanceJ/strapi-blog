@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_ui_components_pdfs",
+  "info": {
+    "displayName": "PDF",
+    "icon": "filePdf"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "pdf": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
