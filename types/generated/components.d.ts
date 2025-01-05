@@ -13,18 +13,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_texts';
-  info: {
-    description: '';
-    displayName: 'Text';
-    icon: 'pencil';
-  };
-  attributes: {
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-  };
-}
-
 export interface UiComponentsBlockquote extends Struct.ComponentSchema {
   collectionName: 'components_ui_components_blockquotes';
   info: {
@@ -50,6 +38,24 @@ export interface UiComponentsPdf extends Struct.ComponentSchema {
   };
 }
 
+export interface UiComponentsText extends Struct.ComponentSchema {
+  collectionName: 'components_ui_components_texts';
+  info: {
+    displayName: 'Text';
+    icon: 'pencil';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface UiComponentsVideo extends Struct.ComponentSchema {
   collectionName: 'components_ui_components_videos';
   info: {
@@ -65,9 +71,9 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.seo': SharedSeo;
-      'shared.text': SharedText;
       'ui-components.blockquote': UiComponentsBlockquote;
       'ui-components.pdf': UiComponentsPdf;
+      'ui-components.text': UiComponentsText;
       'ui-components.video': UiComponentsVideo;
     }
   }

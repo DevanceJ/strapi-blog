@@ -4,8 +4,7 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blog",
-    "description": ""
+    "displayName": "Blog"
   },
   "options": {
     "draftAndPublish": true
@@ -13,38 +12,42 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "pluginOptions": {}
+      "type": "string"
     },
     "description": {
-      "type": "text",
-      "pluginOptions": {}
+      "type": "text"
     },
     "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "pluginOptions": {}
+      "type": "media",
+      "multiple": false
     },
     "slug": {
       "type": "uid",
       "targetField": "title"
     },
+    "readTime": {
+      "type": "integer",
+      "default": 4
+    },
     "content": {
-      "pluginOptions": {},
       "type": "dynamiczone",
       "components": [
-        "shared.text",
-        "ui-components.video",
-        "ui-components.pdf"
-      ],
-      "required": true
+        "ui-components.text",
+        "ui-components.blockquote",
+        "ui-components.pdf",
+        "ui-components.video"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     },
     "authors": {
       "type": "relation",
@@ -52,23 +55,11 @@
       "target": "api::author.author",
       "inversedBy": "blogs"
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {},
-      "component": "shared.seo"
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "blogs"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "blogs"
     },
     "sub_category": {
       "type": "relation",
@@ -76,8 +67,11 @@
       "target": "api::sub-category.sub-category",
       "inversedBy": "blogs"
     },
-    "readTime": {
-      "type": "integer"
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "blogs"
     }
   }
 }

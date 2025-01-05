@@ -404,7 +404,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
-    description: '';
     displayName: 'Blog';
     pluralName: 'blogs';
     singularName: 'blog';
@@ -416,9 +415,13 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     content: Schema.Attribute.DynamicZone<
-      ['shared.text', 'ui-components.video', 'ui-components.pdf']
-    > &
-      Schema.Attribute.Required;
+      [
+        'ui-components.text',
+        'ui-components.blockquote',
+        'ui-components.pdf',
+        'ui-components.video',
+      ]
+    >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -428,7 +431,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    readTime: Schema.Attribute.Integer;
+    readTime: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<4>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'>;
     sub_category: Schema.Attribute.Relation<
